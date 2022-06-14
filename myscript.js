@@ -24,6 +24,12 @@ chrome.extension.sendRequest({ action: "getBlackList" }, function(response) {
             $('.ops').html('<p style="color:red;font-weight: bold;font-size: 24px">这是一个光荣的营销号，随手举报传递正能量 →</p>')
             $('.ipt-txt').text('营销号+1');
             $('body').append('<video src="https://636f-codenav-8grj8px727565176-1256524210.tcb.qcloud.la/audio.mp4" autoplay style="display: none" loop="loop"></video>')
+        } else {
+            if (location.href.indexOf("#") == -1) {
+                // 防止循环重新加载
+                location.href = location.href + "#";
+                location.reload();
+            }
         }
     }, 2000)
 });
